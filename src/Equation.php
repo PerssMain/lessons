@@ -12,7 +12,7 @@ final class Equation
 
         $discriminant = $b * $b - 4 * $a * $c;
 
-        if (isEquals($discriminant, 0)) {
+        if (self::isEquals($discriminant, 0)) {
             return [-$b / (2 * $a), -$b / (2 * $a)];
         } else if ($discriminant >= 0) {
             return [(-$b + sqrt($discriminant)) / (2 * $a), (-$b - sqrt($discriminant)) / (2 * $a)];
