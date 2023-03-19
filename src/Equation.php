@@ -2,7 +2,7 @@
 
 final class Equation
 {
-    const PRECISE = 4;
+    const SCALE = 4;
 
     public static function solve(float $a, float $b, float $c): array
     {
@@ -36,16 +36,16 @@ final class Equation
 
     private static function equalToZero(float $f): bool
     {
-        return 0 === bccomp(number_format($f, 10), '0', self::PRECISE);
+        return 0 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
 
     private static function greaterThanZero(float $f): bool
     {
-        return 1 === bccomp(number_format($f, 10), '0', self::PRECISE);
+        return 1 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
 
     private static function lessThanZero(float $f): bool
     {
-        return -1 === bccomp(number_format($f, 10), '0', self::PRECISE);
+        return -1 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
 }
