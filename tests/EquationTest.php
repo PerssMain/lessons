@@ -22,9 +22,9 @@ final class EquationTest extends TestCase
         );
 
         // p11
-        //$this->assertEquals(
-         //   [-0.1002, -0.1002], Equation::solve(0.1, 2.004, 10.04)
-       // );
+        $this->assertEquals(
+            [-0.1002, -0.1002], Equation::solve(0.1, 2.004, 10.04)
+        );
 
         // p9
         $this->expectException(InvalidArgumentException::class);

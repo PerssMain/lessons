@@ -14,17 +14,12 @@ jobs:
           php_version: 8.1
           php_extensions: bcmath
 
-      - name: PHPUnit Tests
+      - name: PHPUnit
         uses: php-actions/phpunit@v3
-        env:
-          XDEBUG_MODE: coverage
         with:
+          version: 9
+          php_version: 8.1
           configuration: phpunit.xml.dist
+          memory_limit: 256M
           php_extensions: bcmath
-          args: tests --coverage-clover ./coverage.xml
-
-          uses: codecov/codecov-action@v2
-          with:
-            token: ${{ secrets.CODE_COV_TOKEN }}
-            files: ./coverage.xml
-            verbose: true
+          args: --coverage-text
