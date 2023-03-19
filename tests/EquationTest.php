@@ -68,7 +68,7 @@ final class EquationTest extends TestCase
         $list = [log(0), acos(8), '3', 'f'];
 
         foreach (Equation::permutations($list) as $permutation) {
-            $this->expectException(InvalidArgumentException::class);
+            $this->expectException(TypeError::class);
             Equation::solve($permutation[0], $permutation[1], $permutation[2]);
         }
     }
