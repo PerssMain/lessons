@@ -2,58 +2,39 @@
 
 final class Equation
 {
-    const SCALE = 4;
-
-    public function solve(float $a, float $b, float $c): array
+    public static function solve(float $a, float $b, float $c)
     {
-        if (is_nan($a) || is_nan($b) || is_nan($c)) {
-            throw new InvalidArgumentException("arguments must not be NaN");
+        if (self::isEquals($a, 0)) {
+            throw new InvalidArgumentException("Корней нет");
         }
 
-        if (is_infinite($a) || is_infinite($b) || is_infinite($c)) {
-            throw new InvalidArgumentException("arguments must not be infinite");
-        }
+        self::validate([$a, $b, $c]);
 
-        if (self::equalToZero($a)) {
-            throw new InvalidArgumentException('"a" cannot be equal to 0');
-        }
+        $discriminant = $b * $b - 4 * $a * $c;
 
-        if (self::equalToZero($b)) {
-            if (self::lessThanZero($c)) {
-                $x1 = sqrt(abs($c / $a));
-                $x2 = -$x1;
-            } elseif (self::equalToZero($c)) {
-                $x1 = $x2 = 0;
-            } else {
-                return [];
-            }
+        if (isEquals($discriminant, 0)) {
+            return [-$b / (2 * $a), -$b / (2 * $a)];
+        } else if ($discriminant >= 0) {
+            return [(-$b + sqrt($discriminant)) / (2 * $a), (-$b - sqrt($discriminant)) / (2 * $a)];
         } else {
-            $d = $b * $b - 4 * $a * $c;
-            if (self::greaterThanZero($d)) {
-                $x1 = (-$b + sqrt($d)) / 2 * $a;
-                $x2 = (-$b - sqrt($d)) / 2 * $a;
-            } elseif (self::equalToZero($d)) {
-                $x1 = $x2 = (-$b) / 2 * $a;
-            } else {
-                return [];
+            throw new InvalidArgumentException("решения нет");
+        }
+    }
+
+    public static function isEquals($a, $b)
+    {
+        return abs($a - $b) < 0.0001;
+    }
+
+    private static function validate($arr)
+    {
+        foreach ($arr as &$value) {
+            if (is_infinite($value)) {
+                throw new InvalidArgumentException("Указано бесконечное число");
+            }
+            if (is_nan($value)) {
+                throw new InvalidArgumentException("Указано неопределенное число");
             }
         }
-
-        return [$x1, $x2];
-    }
-
-    private function equalToZero(float $f): bool
-    {
-        return 0 === bccomp(number_format($f, 10), '0', self::SCALE);
-    }
-
-    private function greaterThanZero(float $f): bool
-    {
-        return 1 === bccomp(number_format($f, 10), '0', self::SCALE);
-    }
-
-    private function lessThanZero(float $f): bool
-    {
-        return -1 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
 }
