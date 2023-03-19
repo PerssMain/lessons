@@ -39,7 +39,7 @@ final class EquationTest extends TestCase
     public function testSolve5(): void
     {
         $this->assertEquals(
-            [-0.10020000000000001, -0.10020000000000001], Equation::solve(0.1, 3.003, 10.10)
+            [-0.10020000000000001, -0.10020000000000001], Equation::solve(0.1, 2.004, 10.04)
         );
     }
 }
