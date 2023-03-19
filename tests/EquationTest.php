@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
@@ -21,6 +22,7 @@ final class EquationTest extends TestCase
     public function testSolve5(): void
     {
         $this->assertEquals(
+            [1, -1],
             Equation::solve(1, 0, -1)
         );
     }
@@ -63,7 +65,7 @@ final class EquationTest extends TestCase
      */
     public function testSolve13(): void
     {
-        $list = [NULL, log(0), acos(8), '3', 'f'];
+        $list = [null, log(0), acos(8), '3', 'f'];
 
         foreach (Equation::permutations($list) as $permutation) {
             $this->expectException(InvalidArgumentException::class);
