@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build-test:
+  unit-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,10 +14,15 @@ jobs:
           php_version: 8.1
           php_extensions: bcmath
 
-      - name: PHPUnit
+      - name: PHPUnit tests
         uses: php-actions/phpunit@v3
         with:
-          version: 9
+          version: 9.5.0
           php_version: 8.1
-          configuration: phpunit.xml.dist
-          php_extensions: bcmath
+          configuration: phpunit.xml
+          memory_limit: "256M"
+          php_extensions: xdebug, bcmath
+          coverage_clover: "coverage/clover.xml"
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
