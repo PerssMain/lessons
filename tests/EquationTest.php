@@ -53,5 +53,4 @@ final class EquationTest extends TestCase
             [-1, -1], Equation::solve(1, 2, 0.999999999)
         );
     }
-
 }

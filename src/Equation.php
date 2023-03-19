@@ -2,6 +2,11 @@
 
 final class Equation
 {
+    public static function isEquals($a, $b)
+    {
+        return abs($a - $b) < 0.0001;
+    }
+
     public static function solve(float $a, float $b, float $c)
     {
         if (self::isEquals($a, 0)) {
@@ -19,11 +24,6 @@ final class Equation
         } else {
             throw new InvalidArgumentException("решения нет");
         }
-    }
-
-    public static function isEquals($a, $b)
-    {
-        return abs($a - $b) < 0.0001;
     }
 
     private static function validate($arr)
