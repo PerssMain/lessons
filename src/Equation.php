@@ -4,11 +4,11 @@ final class Equation
 {
     public static function solve(float $a, float $b, float $c): array
     {
-        if ($a.is_nan() || $b.is_nan() || $c.is_nan()) {
+        if (is_nan($a) || is_nan($b) || is_nan($c)) {
             throw new InvalidArgumentException("arguments must not be NaN");
         }
 
-        if ($a.is_infinite() || $b.is_infinite() || $c.is_infinite()) {
+        if (is_infinite($a) || is_infinite($b) || is_infinite($c)) {
             throw new InvalidArgumentException("arguments must not be infinite");
         }
 

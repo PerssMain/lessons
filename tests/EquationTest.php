@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 final class EquationTest extends TestCase
 {
     // Написать тест, который проверяет, что для уравнения x^2+1 = 0 корней нет (возвращается пустой массив)
-    public function testTask3(): void
+    public function solveTest1(): void
     {
         //arrange
         $a = 1;
