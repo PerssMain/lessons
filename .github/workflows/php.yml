@@ -21,8 +21,7 @@ jobs:
           php_version: 8.1
           configuration: phpunit.xml
           memory_limit: "256M"
-          php_extensions: xdebug, bcmath
-          coverage_clover: "coverage/clover.xml"
+          php_extensions: bcmath
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
