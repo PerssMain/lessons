@@ -22,4 +22,3 @@ jobs:
           configuration: phpunit.xml.dist
           memory_limit: 256M
           php_extensions: bcmath
-          args: --coverage-text
