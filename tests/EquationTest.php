@@ -13,7 +13,7 @@ final class EquationTest extends TestCase
         $c = 1;
 
         //act
-        $actual = mathService.solve($a, $b, $c);
+        $actual = Equation.solve($a, $b, $c);
         //assert
 
         $this->assertThat($actual, 0, "actual value is not equals to expected");
