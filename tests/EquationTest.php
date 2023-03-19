@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
@@ -30,7 +31,8 @@ final class EquationTest extends TestCase
     public function testSolve7(): void
     {
         $this->assertEquals(
-            [-1, -1], Equation::solve(1, 2, 1)
+            [-1, -1],
+            Equation::solve(1, 2, 1)
         );
     }
 
@@ -50,7 +52,22 @@ final class EquationTest extends TestCase
     public function testSolve7_2(): void
     {
         $this->assertEquals(
-            [-1, -1], Equation::solve(1, 2, 0.999999999)
+            [-1, -1],
+            Equation::solve(1, 2, 0.999999999)
         );
+    }
+
+    /**
+     * 13 Посмотреть какие еще значения могут принимать числа типа double,
+     * кроме числовых и написать тест с их использованием на все коэффициенты. solve должен выбрасывать исключение.
+     */
+    public function testSolve13(): void
+    {
+        $list = [NULL, log(0), acos(8), '3', 'f'];
+
+        foreach (Equation::permutations($list) as $permutation) {
+            $this->expectException(InvalidArgumentException::class);
+            Equation::solve($permutation[0], $permutation[1], $permutation[2]);
+        }
     }
 }
