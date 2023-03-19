@@ -4,7 +4,7 @@ final class Equation
 {
     const SCALE = 4;
 
-    public static function solve(float $a, float $b, float $c): array
+    public function solve(float $a, float $b, float $c): array
     {
         if (is_nan($a) || is_nan($b) || is_nan($c)) {
             throw new InvalidArgumentException("arguments must not be NaN");
@@ -42,17 +42,17 @@ final class Equation
         return [$x1, $x2];
     }
 
-    private static function equalToZero(float $f): bool
+    private function equalToZero(float $f): bool
     {
         return 0 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
 
-    private static function greaterThanZero(float $f): bool
+    private function greaterThanZero(float $f): bool
     {
         return 1 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
 
-    private static function lessThanZero(float $f): bool
+    private function lessThanZero(float $f): bool
     {
         return -1 === bccomp(number_format($f, 10), '0', self::SCALE);
     }
