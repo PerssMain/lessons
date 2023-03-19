@@ -19,6 +19,7 @@ jobs:
         with:
           version: 9
           php_version: 8.1
-          configuration: phpunit.xml.dist
+          configuration: tests/phpunit.xml
           memory_limit: 256M
           php_extensions: bcmath
+          args: --coverage-text
