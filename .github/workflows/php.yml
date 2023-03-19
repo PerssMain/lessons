@@ -12,6 +12,7 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: 8.1
+          php_extensions: bcmath
 
       - name: PHPUnit
         uses: php-actions/phpunit@v3
@@ -19,4 +20,4 @@ jobs:
           version: 9
           php_version: 8.1
           configuration: phpunit.xml.dist
-          memory_limit: 256M
+          php_extensions: bcmath
