@@ -5,7 +5,7 @@
         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
         backupGlobals="false"
         backupStaticAttributes="false"
-        bootstrap="vendor/autoload.php"
+        bootstrap="homework_1/vendor/autoload.php"
         colors="true"
         cacheResult="false"
 >
@@ -16,7 +16,7 @@
   </coverage>
   <testsuites>
     <testsuite name="main">
-      <directory>./tests</directory>
+      <directory>tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>
