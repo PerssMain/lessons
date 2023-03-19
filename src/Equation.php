@@ -24,14 +24,10 @@ final class Equation
             $res = -$b / (2 * $a);
             return [$res, $res];
         } else {
-            $res1 = (-$b + sqrt(D)) / (2 * $a);
-            $res2 = (-$b - sqrt(D)) / (2 * $a);
+            $result1 = (-$b + sqrt(D)) / (2 * $a);
+            $result2 = (-$b - sqrt(D)) / (2 * $a);
 
-            return [$res1, $res2];
+            return [$result1, $result2];
         }
-    }
-
-    function is_blank($value) {
-        return empty($value) && !is_numeric($value);
     }
 }

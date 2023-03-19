@@ -13,9 +13,9 @@ final class EquationTest extends TestCase
         $c = 1;
 
         //act
-        $actual = Equation::solve($a, $b, $c);
-
+        $actual = mathService.solve($a, $b, $c);
         //assert
-        $this->assertThat($actual,is_blank($actual), "roots of equation");
+
+        $this->assertThat($actual, 0, "actual value is not equals to expected");
     }
 }
