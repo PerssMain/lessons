@@ -4,17 +4,12 @@ use PHPUnit\Framework\TestCase;
 
 final class EquationTest extends TestCase
 {
+
+
     public function solveTest1(): void
     {
-        //arrange
-        $a = 1;
-        $b = 0;
-        $c = 1;
-
-        //act
-        $actual = Equation::solve($a, $b, $c);
-        //assert
-
-        $this->assertThat($actual, 0, "actual value is not equals to expected");
+        $this->assertEmpty(
+            Equation::solve(1, 0, 1)
+        );
     }
 }
